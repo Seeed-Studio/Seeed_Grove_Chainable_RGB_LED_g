@@ -7,32 +7,54 @@ Arduino library compatible with Grove Chainable LED and the P9813 chip. It allow
 Supports both RGB and HSB color spaces for setting the color of each individual LED.
 
 
+**Note:**
 
-### Usage:
+This library is used for Seeed graphical programming Project only.
 
-####Installation
+API 
+--
+	/* 
+	* Function Name: ChainableRGBLEDWrite 
+	* Input - pinClk: pin name of clock 
+	*         pinDta: pin name of data 
+	*         led_num: how many leds 
+	*         red, green, blue - RGB value of the color 
+	* Return - NULL 
+	*/ 
+	void ChainableRGBLEDWrite(int pinClk, int pinDta, int led_num, unsigned char red, unsigned char 
+	green, unsigned char blue) 
 
-1. Grab the latest version from the download section of GitHub.
-(https://github.com/pjpmarques/ChainableLED/downloads)
+Test Case 
+--
 
-2. Unzip it to your Arduino "libraries" directory. 
+R->G->B, 500ms 
 
-3. It should be ready to use. Examples are included.
-
-
-####Library Interface
-
-```c++
-    class ChainableLED {
-      public:
-        ChainableLED(byte clk_pin, byte data_pin, byte number_of_leds);
-
-        void setColorRGB(byte led, byte red, byte green, byte blue);
-        void setColorHSB(byte led, float hue, float saturation, float brightness);
-    }
-```
-
-For more information, please refer to [author's wiki page](https://github.com/pjpmarques/ChainableLED/wiki) or [seeedstudio's wiki page](http://www.seeedstudio.com/wiki/Grove_-_Chainable_RGB_LED).
+	// test for seeed graphical programming project 
+	// loovee @ 2015-8-4 
+	 
+	#include <ChainableLED.h> 
+	 
+	#define NUM_LEDS  5         // number of leds 
+	 
+	ChainableLED leds; 
+	 
+	const int pinClk = 7; 
+	const int pinDta = 8; 
+	 
+	void setup() 
+	{ 
+	 
+	} 
+	 
+	void loop() 
+	{ 
+	    leds.ChainableRGBLEDWrite(pinClk, pinDta, NUM_LEDS, 255, 0, 0);         // red 
+	    delay(500); 
+	    leds.ChainableRGBLEDWrite(pinClk, pinDta, NUM_LEDS, 0, 255, 0);         // green 
+	    delay(500); 
+	    leds.ChainableRGBLEDWrite(pinClk, pinDta, NUM_LEDS, 0, 0, 255);         // blue 
+	    delay(500); 
+	}
 
 ----
 
