@@ -19,16 +19,6 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/* Information about the P9813 protocol obtained from:
- * http://www.seeedstudio.com/wiki/index.php?title=Twig_-_Chainable_RGB_LED
- *
- * HSB to RGB routine adapted from:
- * http://mjijackson.com/2008/02/rgb-to-hsl-and-rgb-to-hsv-color-model-conversion-algorithms-in-javascript
- */
-
-
-// --------------------------------------------------------------------------------------
-
 #include "ChainableLED.h"
 
 // Forward declaration

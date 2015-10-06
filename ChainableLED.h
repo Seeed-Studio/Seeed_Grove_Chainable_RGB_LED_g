@@ -19,14 +19,6 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-/* 
- * Library for controlling a chain of RGB LEDs based on the P9813 protocol.
- * E.g., supports the Grove Chainable RGB LED product.
- *
- * Information about the P9813 protocol obtained from:
- * http://www.seeedstudio.com/wiki/index.php?title=Twig_-_Chainable_RGB_LED
- */
-
 #ifndef __ChainableLED_h__
 #define __ChainableLED_h__
 
@@ -78,6 +70,15 @@ public: // api for
         _clk_pin = pinClk;
         _data_pin = pinDta;
         _num_leds = led_num;
+        
+        static unsigned char __r=0;
+        static unsigned char __g=0;
+        static unsigned char __b=0;
+        
+        if(red==__r && green==__g && blue==__b)return;
+        __r = red;
+        __g = green;
+        __b = blue;
         
         pinMode(_clk_pin, OUTPUT);
         pinMode(_data_pin, OUTPUT);
